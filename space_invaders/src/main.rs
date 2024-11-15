@@ -12,7 +12,7 @@ fn main() {
                 .set(WindowPlugin {
                     primary_window: Some(Window {
                         title: String::from("Space Invaders"),
-                        position: WindowPosition::Centered(MonitorSelection::Primary),
+                        position: WindowPosition::Automatic,
                         resolution: Vec2::new(512., 512.).into(),
                         ..Default::default()
                     }),
