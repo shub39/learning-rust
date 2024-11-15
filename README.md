@@ -1,4 +1,4 @@
-# Learning Rust 
+# Learning Rust 🦀
 
 ### A repo for my practice and future reference
 
