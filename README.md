@@ -9,7 +9,7 @@
 
 - [x] `guessing_game` : A simple number guessing game.
 - [x] `space_invaders` : A Space Invaders clone made using [bevy](https://github.com/bevyengine/bevy)
-- [ ] `ball_game` : A Simple Ball game made using [bevy](https://github.com/bevyengine/bevy)
+- [x] `ball_game` : A Simple Ball game made using [bevy](https://github.com/bevyengine/bevy)
 
 ## From where?
 
