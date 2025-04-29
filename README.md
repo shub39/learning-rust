@@ -10,9 +10,11 @@
 - [x] `guessing_game` : A simple number guessing game.
 - [x] `space_invaders` : A Space Invaders clone made using [bevy](https://github.com/bevyengine/bevy)
 - [x] `ball_game` : A Simple Ball game made using [bevy](https://github.com/bevyengine/bevy)
+- [ ] `comprehensive-rust` : Rust notes and excercises
 
 ## From where?
 
 - [The Interactive Rust Book](https://rust-book.cs.brown.edu/experiment-intro.html)
 - [Making a Space Invaders Game with Bevy and Rust in under 10 Minutes](https://youtu.be/PDa88vDY7O0)
 - [Learn Bevy Engine 0.10 Beginner Tutorial Series](https://www.youtube.com/playlist?list=PLVnntJRoP85JHGX7rGDu6LaF3fmDDbqyd)
+- [comprehensive-rust](https://github.com/google/comprehensive-rust)
