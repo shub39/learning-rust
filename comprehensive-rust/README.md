@@ -77,7 +77,71 @@ fn main() {
 * Pattern matching works the same as kotlin
 * Arrays can contain other arrays
 
-## Shared References (Borrowing)
+## References
 
-* A way to access a value without taking ownership
-# CONTINUE FROM DAY 1 Afternoon > Shared references
+* A shared reference is a way to access a value without taking ownership
+* A shared reference to a type `T` has type `&T`. A reference value is made with the & operator. The `*` operator “dereferences” a reference, yielding its value.
+* references can never be null in rust
+* **Exclisive references** allow for changing the referenced value
+* A slice gives a view of a larger collection
+```rust
+fn main() {
+    let a: [i32; 6] = [10, 20, 30, 40, 50, 60];
+    println!("a: {a:?}");
+
+    let s: &[i32] = &a[2..4]; // slice from 30 to 50
+    let x: &[i32] = &a[..]; // full copy
+
+    println!("s: {s:?}");
+}
+```
+* There are 2 types of strings in rust, `&str` is a slice od UTF-8 encoded bytes and `String` is an owned buffer of UTF-8 encoded bytes.
+* References can never be null and can never outlive the data they point to
+
+## User defined data structures
+* **Named Structs** are like in C or C++ without `typedef` or inheritance
+```rust
+struct Person {
+    name: String,
+    age: u8,
+}
+
+fn describe(person: &Person) {
+    println!("{} is {} years old", person.name, person.age);
+}
+
+fn main() {
+    let mut peter = Person {
+        name: String::from("Peter"),
+        age: 27,
+    };
+    describe(&peter);
+}
+```
+* **Tuple Structs** are used when name of the parameters are not important
+* **Enums** are used to create a type which has a few different variants, like a `sealed interface` in kotlin
+```rust
+#[derive(Debug)]
+enum Direction {
+    Left,
+    Right,
+}
+
+#[derive(Debug)]
+enum PlayerMove {
+    Pass,                        // Simple variant
+    Run(Direction),              // Tuple variant
+    Teleport { x: u32, y: u32 }, // Struct variant
+}
+
+fn main() {
+    let dir = Direction::Left;
+    let player_move: PlayerMove = PlayerMove::Run(dir);
+    println!("On this turn: {player_move:?}");
+}
+```
+* **typealiases** are used to reduce long and complex types
+* **const** are evaluated at compile time and their values are inlined wherever they are used
+* **static** variables are not inlined and are stored in dedicated locations
+
+# Resume from Day 2
