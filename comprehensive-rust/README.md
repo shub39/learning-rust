@@ -144,4 +144,29 @@ fn main() {
 * **const** are evaluated at compile time and their values are inlined wherever they are used
 * **static** variables are not inlined and are stored in dedicated locations
 
-# Resume from Day 2
+## Pattern Matching
+* Irrefutable patterns
+```rust
+fn takes_tuple(tuple: (char, i32, bool)) {
+    let a = tuple.0;
+    let b = tuple.1;
+    let c = tuple.2;
+
+    // This does the same thing as above.
+    let (a, b, c) = tuple;
+
+    // Ignore the first element, only bind the second and third.
+    let (_, b, c) = tuple;
+
+    // Ignore everything but the last element.
+    let (.., c) = tuple;
+}
+
+fn main() {
+    takes_tuple(('a', 777, true));
+}
+```
+* similarly, enums and structs can also be destructured
+* Rust has some unique let control flow statements: `if let`, `while let`, `let else`
+
+# Resume from Day 2 > methods and traits

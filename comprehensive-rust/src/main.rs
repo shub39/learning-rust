@@ -3,6 +3,7 @@ mod collatz;
 mod matrix;
 mod vectors;
 mod elevator;
+mod expression_evaluater;
 
 fn main() {
     let n = 11;
