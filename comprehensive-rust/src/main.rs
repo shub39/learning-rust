@@ -1,15 +1,20 @@
+use crate::logger::Logger;
+
 mod fibonacci;
 mod collatz;
 mod matrix;
 mod vectors;
 mod elevator;
 mod expression_evaluater;
+mod logger;
 
 fn main() {
+    // collatz
     let n = 11;
     println!("fib {n} = {}", fibonacci::fibonacci(n));
     println!("Collatz Length of {n} = {}", collatz::collatz_length(n));
 
+    // matrix
     let matrix = [
         [101, 102, 103],
         [201, 202, 203],
@@ -20,11 +25,13 @@ fn main() {
     let transpose = matrix::transpose(matrix);
     dbg!(transpose);
 
+    // vectors
     let mut v = [1.0, 2.0, 9.0];
     println!("Magnitude of {v:?}: {}", vectors::magnitude(&v));
     vectors::normalize(&mut v);
     println!("Magnitude of {v:?} after normalization: {}", vectors::magnitude(&v));
 
+    // elevator
     println!(
         "A ground floor passenger has pressed the up button: {:?}",
         elevator::lobby_call_button_pressed(0, elevator::Direction::Up)
@@ -37,4 +44,9 @@ fn main() {
     );
     println!("The car door closed: {:?}", elevator::car_door_closed());
     println!("The car has arrived on the 3rd floor: {:?}", elevator::car_arrived(3));
+    
+    // logger
+    let logger = logger::VerbosityFilter { max_verbosity: 3, inner: logger::StderrLogger };
+    logger.log(5, "FYI");
+    logger.log(2, "Uhoh");
 }

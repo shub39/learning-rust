@@ -168,5 +168,76 @@ fn main() {
 ```
 * similarly, enums and structs can also be destructured
 * Rust has some unique let control flow statements: `if let`, `while let`, `let else`
+* Rust allows to define methods for specific types. like extension functions in kotlin using an `impl` block
+```rust
+#[derive(Debug)]
+struct CarRace {
+    name: String,
+    laps: Vec<i32>,
+}
 
-# Resume from Day 2 > methods and traits
+impl CarRace {
+    // No receiver, a static method
+    fn new(name: &str) -> Self {
+        Self { name: String::from(name), laps: Vec::new() }
+    }
+
+    // Exclusive borrowed read-write access to self
+    fn add_lap(&mut self, lap: i32) {
+        self.laps.push(lap);
+    }
+
+    // Shared and read-only borrowed access to self
+    fn print_laps(&self) {
+        println!("Recorded {} laps for {}:", self.laps.len(), self.name);
+        for (idx, lap) in self.laps.iter().enumerate() {
+            println!("Lap {idx}: {lap} sec");
+        }
+    }
+
+    // Exclusive ownership of self (covered later)
+    fn finish(self) {
+        let total: i32 = self.laps.iter().sum();
+        println!("Race {} is finished, total lap time: {}", self.name, total);
+    }
+}
+
+fn main() {
+    let mut race = CarRace::new("Monaco Grand Prix");
+    race.add_lap(70);
+    race.add_lap(68);
+    race.print_laps();
+    race.add_lap(71);
+    race.print_laps();
+    race.finish();
+    // race.add_lap(42);
+}
+```
+* types can be abstracted over with traits. like interfaces in kotlin
+```rust
+trait Pet {
+    fn talk(&self) -> String; // abstract implementation
+
+    fn greet(&self) { // default implementation
+        println!("Oh you're a cutie! What's your name? {}", self.talk());
+    }
+}
+
+struct Dog {
+    name: String,
+    age: i8,
+}
+
+impl Pet for Dog {
+    fn talk(&self) -> String { // implementation
+        format!("Woof, my name is {}!", self.name)
+    }
+}
+
+fn main() {
+    let fido = Dog { name: String::from("Fido"), age: 5 };
+    fido.greet();
+}
+```
+
+# Resume from Day 2 > Generics
