@@ -7,6 +7,7 @@ mod vectors;
 mod elevator;
 mod expression_evaluater;
 mod logger;
+mod generic;
 
 fn main() {
     // collatz

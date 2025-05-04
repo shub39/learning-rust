@@ -240,4 +240,21 @@ fn main() {
 }
 ```
 
-# Resume from Day 2 > Generics
+## Generics
+* Rust also has generics like kotlin
+```rust
+fn pick<T>(cond: bool, left: T, right: T) -> T { // here T is a generic type
+    if cond {
+        left
+    } else {
+        right
+    }
+}
+
+fn main() {
+    println!("picked a number: {:?}", pick(true, 222, 333));
+    println!("picked a string: {:?}", pick(false, 'L', 'R'));
+}
+```
+
+# Resume from Day 2 Afternoon
